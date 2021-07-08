@@ -1,0 +1,68 @@
+@import '../helpers/variable';
+@import '../helpers/mixins';
+
+.__header {
+  height: 60px;
+  background-color: $color-red-10;
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+  a {
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  @include smaller-than-lg {
+    height: 54px;
+  }
+  .__todo__navbar__logo {
+    p {
+      color: $color-white-100;
+      @include font-size(h4);
+      @include font-weight(bold);
+      @include line-height(h4);
+    }
+  }
+
+  .__todo__navbar__functions {
+    justify-content: flex-end;
+
+    .functions__add {
+      color: white;
+      height: auto;
+      &:hover {
+        color: rgb(202, 202, 202);
+      }
+      &:active {
+        color:rgb(100, 100, 100)
+      }
+    }
+    form {
+      height: 60px;
+      @include smaller-than-lg {
+        height: 54px;
+      }
+      input {
+        padding: 4px 12px;
+        margin-left: 6px;
+        @include font-size(body2);
+        @include font-weight(regular);
+        @include line-height(body2);
+        @include smaller-than-md {
+          max-width: 120px;
+        }
+      }
+      button {
+        padding: 4px 12px;
+        @include font-size(body2);
+        @include font-weight(regular);
+        @include line-height(body2);
+      }
+    }
+  }
+}

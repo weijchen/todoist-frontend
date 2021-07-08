@@ -1,0 +1,257 @@
+/** personal website GuideStyle */
+
+/** Color */
+// the Black
+$color-black-100: #131515;
+$color-black-70: #000e3d;
+$color-black-50: #818c9e;
+$color-black-30: #a2aec3;
+$color-black-10: #f9fbfd;
+
+// Primary Colors
+$color-orange-100: #b82714;
+$color-orange-50: #ed6a5a;
+$color-orange-10: #ef7b6c;
+
+// Secondary Colors
+$color-yellow-100: #ddd42c;
+$color-yellow-50: #e5df61;
+$color-yellow-10: #f1eda7;
+
+// Blue
+$color-blue-100: #053a89;
+$color-blue-70: #0062f5;
+$color-blue-50: #3397f7;
+$color-blue-30: #5e6f80;
+$color-blue-10: #bbddff;
+
+// Red, Warning
+$color-red-100: #750606;
+$color-red-50: #9d0707;
+$color-red-10: #da2350;
+
+// Green, Success
+$color-green-100: #0d5932;
+$color-green-50: #1b8850;
+$color-green-10: #c4f1be;
+
+$color-white-100: #ffffff;
+
+// default colors
+$colors: (
+  black: $color-black-100,
+  primary: $color-red-50,
+  secondary: $color-yellow-50,
+  yellow: $color-yellow-50,
+  blue: $color-blue-50,
+  red: $color-red-50,
+  green: $color-green-50,
+  white: $color-white-100,
+);
+
+$btn: (
+  prmary: (
+    color: map-get($colors, white),
+    background: map-get($colors, primary),
+  ),
+  secondary: (
+    color: map-get($colors, white),
+    background: map-get($colors, secondary),
+  ),
+  gray: (
+    color: map-get($colors, white),
+    background: map-get($colors, gray),
+  ),
+);
+
+/** Typography */
+// TODO: fix size for md and lg
+$font-size-h1: (
+  xl: 48px,
+  lg: 48px,
+  md: 48px,
+);
+$font-size-h2: (
+  xl: 40px,
+  lg: 40px,
+  md: 40px,
+);
+$font-size-h3: (
+  xl: 32px,
+  lg: 32px,
+  md: 32px,
+);
+$font-size-h4: (
+  xl: 24px,
+  lg: 24px,
+  md: 24px,
+);
+$font-size-h5: (
+  xl: 20px,
+  lg: 20px,
+  md: 20px,
+);
+$font-size-body1: (
+  xl: 16px,
+  lg: 16px,
+  md: 16px,
+);
+$font-size-body2: (
+  xl: 14px,
+  lg: 14px,
+  md: 14px,
+);
+$font-size-caption: (
+  xl: 12px,
+  lg: 12px,
+  md: 12px,
+);
+$font-size-overline: (
+  xl: 10px,
+  lg: 10px,
+  md: 10px,
+);
+
+/** Media query */
+$desktop-media: 1440px;
+$desktop-small-media: 1024px;
+$mobile-media: 768px;
+$mobile-h-media: 480px;
+
+$width-xl: 1440px;
+$width-lg: 1024px;
+$width-md: 768px;
+$width-sm: 480px;
+
+@mixin smaller-than-xl() {
+  @media all and (max-width: $width-xl - 1) {
+    @content;
+  }
+}
+
+@mixin smaller-than-lg() {
+  @media all and (max-width: $width-lg - 1) {
+    @content;
+  }
+}
+
+@mixin smaller-than-md() {
+  @media all and (max-width: $width-md - 1) {
+    @content;
+  }
+}
+
+@mixin smaller-than-sm() {
+  @media all and (max-width: $width-sm - 1) {
+    @content;
+  }
+}
+
+//desktop
+@mixin desktop-width() {
+  @media all and (min-width: $desktop-media) {
+    @content;
+  }
+}
+//desktop small
+@mixin desktop-small-width() {
+  @media all and (max-width: $desktop-small-media - 1) {
+    @content;
+  }
+}
+//pad
+@mixin pad-width() {
+  @media all and (min-width: $mobile-media) and (max-width: $desktop-media - 1) {
+    @content;
+  }
+}
+//mobile
+@mixin mobile-width() {
+  @media all and (max-width: $mobile-media - 1) {
+    @content;
+  }
+}
+//mobile-horizontal
+@mixin mobile-horizontal-width() {
+  @media all and (max-width: $mobile-h-media - 1) {
+    @content;
+  }
+}
+
+/** Font size */
+$getFontSize: (
+  desktop: (
+    'h1': 48px,
+    'h2': 40px,
+    'h3': 32px,
+    'h4': 24px,
+    'h5': 20px,
+    'body1': 16px,
+    'body2': 14px,
+    'caption': 12px,
+    'overline': 10px,
+  ),
+  pad: (
+    'h1': 48px,
+    'h2': 40px,
+    'h3': 32px,
+    'h4': 24px,
+    'h5': 20px,
+    'body1': 16px,
+    'body2': 14px,
+    'caption': 12px,
+    'overline': 10px,
+  ),
+  mobile: (
+    'h1': 40px,
+    'h2': 32px,
+    'h3': 24px,
+    'h4': 20px,
+    'h5': 16px,
+    'body1': 14px,
+    'body2': 12px,
+    'caption': 10px,
+    'overline': 8px,
+  ),
+);
+
+@mixin font-size($size) {
+  @include desktop-width {
+    $desktop: map-get($getFontSize, desktop);
+    font-size: map-get($desktop, $size);
+  }
+  @include pad-width {
+    $pad: map-get($getFontSize, pad);
+    font-size: map-get($pad, $size);
+  }
+  @include mobile-width {
+    $mobile: map-get($getFontSize, mobile);
+    font-size: map-get($mobile, $size);
+  }
+}
+
+$getFontWeight: (
+  'bold': 700,
+  'medium': 500,
+  'regular': 400,
+);
+
+@mixin font-weight($size) {
+  font-weight: map-get($getFontWeight, $size);
+}
+
+$getLineHeight: (
+  'h1': 56px,
+  'h2': 48px,
+  'h3': 40px,
+  'h4': 32px,
+  'h5': 28px,
+  'body1': 28px,
+  'body2': 20px,
+  'caption': 14px,
+  'overline': 12px,
+);
+
+@mixin line-height($size) {
+  line-height: map-get($getLineHeight, $size);
+} ;

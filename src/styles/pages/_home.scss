@@ -1,0 +1,40 @@
+@import '../helpers/variable';
+@import '../helpers/mixins';
+
+.todo__home {
+  overflow-x: hidden;
+  margin-top: 60px;
+  @include smaller-than-lg {
+    margin-top: 54px;
+  }
+  .todo__container {
+    justify-content: space-around;
+    @include smaller-than-md {
+      flex-direction: column;
+    }
+  }
+}
+
+.drag-drop-space {
+  justify-content: space-between;
+  .dropzone {
+    width: 150px;
+    height: 150px;
+    background: lightblue;
+    padding: 10px;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #drag-source {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    background: #f8cecc;
+    border: 1px solid #b85450;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+}

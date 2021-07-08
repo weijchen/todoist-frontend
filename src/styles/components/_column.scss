@@ -1,0 +1,126 @@
+@import '../helpers/variable';
+@import '../helpers/mixins';
+
+.column__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 8px 16px;
+  padding: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  @include smaller-than-md {
+    margin: 8px auto;
+    border: none;
+    border-bottom: 1px solid lightgrey;
+  }
+  .column__task__title {
+    padding: 0px 12px;
+    @include font-size(h3);
+    @include font-weight(normal);
+    @include line-height(h3);
+  }
+
+  .column__task__list {
+    flex-grow: 1;
+    min-height: 100px;
+    border-radius: 6px;
+    padding: 12px;
+    &.draggingOver {
+      background-color: $color-black-30;
+      transition: background-color 0.2s ease;
+    }
+    .column__task__item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding: 8px;
+      border: 1px solid lightgrey;
+      border-radius: 6px;
+      background-color: $color-white-100;
+      @include font-size(h4);
+      @include font-weight(regular);
+      @include line-height(h4);
+
+      div {
+        padding: 0px 2px;
+      }
+
+      &.dragging {
+        background-color: $color-blue-30;
+        color: $color-white-100;
+        transition: background-color 0.2s ease;
+      }
+
+      &.pinned {
+        background-color: $color-red-50;
+        color: $color-white-100;
+        #edit-icon {
+          &:hover {
+            color: $color-white-100;
+          }
+        }
+        #done-icon {
+          &:hover {
+            color: $color-white-100;
+          }
+        }
+        #delete-icon {
+          &:hover {
+            color: $color-white-100;
+          }
+        }
+        #drag-icon {
+          &:hover {
+            color: $color-white-100;
+          }
+        }
+      }
+      #edit-icon {
+        margin-right: 8px;
+        opacity: 0.2;
+        color: $color-red-10;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          color: $color-black-100;
+          opacity: 1;
+        }
+      }
+
+      #done-icon {
+        margin-right: 8px;
+        opacity: 0.2;
+        color: $color-red-10;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          color: $color-black-100;
+          opacity: 1;
+        }
+      }
+
+      #delete-icon {
+        margin-right: 8px;
+        opacity: 0.2;
+        color: $color-red-10;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          color: $color-black-100;
+          opacity: 1;
+        }
+      }
+
+      #drag-icon {
+        opacity: 0.2;
+        color: $color-black-100;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

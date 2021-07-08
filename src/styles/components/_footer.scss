@@ -1,0 +1,36 @@
+@import '../helpers/variable';
+@import '../helpers/mixins';
+
+.__footer {
+  height: auto;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  background-color: $color-red-10;
+  color: $color-white-100;
+
+  .__footer__container {
+    margin: 0px 39px;
+    @include smaller-than-lg {
+      margin: 0px 24px;
+    }
+
+    .__footer__title {
+      @include font-size(h4);
+      @include font-weight(bold);
+      @include line-height(h4);
+    }
+    .__footer__contact {
+      text-align: end;
+      @include font-size(body2);
+      @include font-weight(regular);
+      @include line-height(body2);
+    }
+
+    .__footer__footnote {
+      text-align: end;
+      @include font-size(body2);
+      @include font-weight(regular);
+      @include line-height(body2);
+    }
+  }
+}
