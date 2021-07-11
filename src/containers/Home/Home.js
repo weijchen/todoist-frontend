@@ -13,6 +13,7 @@ function Home() {
   const [statuses, setStatuses] = useState(null);
   const [isWaiting, setIsWaiting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [isTokenValid, setIsTokenValid] = useState(true);
 
   const getTasks = async () => {
     setIsWaiting(true);
@@ -114,6 +115,11 @@ function Home() {
   };
 
   useEffect(() => {
+    const token = window.localStorage.getItem('accessToken');
+    setIsTokenValid(!!token);
+  }, [window.localStorage]);
+
+  useEffect(() => {
     getStatuses();
     getTasks();
   }, []);
@@ -122,6 +128,7 @@ function Home() {
     <Layout
       isWaiting={isWaiting}
       errorMsg={errorMsg}
+      isTokenValid={isTokenValid}
       tasks={tasks}
       updateTaskStatus={updateTaskStatus}
       statuses={statuses}

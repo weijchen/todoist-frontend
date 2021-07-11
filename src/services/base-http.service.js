@@ -42,7 +42,7 @@ class BaseHttpService {
   }
 
   handle401() {
-    window.location.hash = '/signin';
+    window.location = '/signin';
   }
 
   getCommonOptions() {

@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
 
 import AddIcon from '@material-ui/icons/Add';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,9 +16,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import useStores from '../../stores/stores';
 import TasksService from '../../services/tasks.service';
+import AuthService from '../../services/auth.service';
 
 function Header() {
   const tasksService = new TasksService();
+  const authService = new AuthService();
   const { windowStore } = useStores();
   const [isHeaderAtTop, setIsHeaderAtTop] = useState(true);
   const [openAddDialog, setOpenAddDialog] = useState(false);
@@ -25,6 +28,11 @@ function Header() {
 
   const onClickAddBtn = () => {
     setOpenAddDialog(true);
+  };
+
+  const onClickSignOutBtn = async () => {
+    authService.signout();
+    window.location = '/';
   };
 
   const handleAddDialogClose = () => {
@@ -68,6 +76,9 @@ function Header() {
             <div className="__todo__navbar__functions d-flex">
               <div onClick={() => onClickAddBtn()}>
                 <AddIcon className="functions__add" />
+              </div>
+              <div onClick={() => onClickSignOutBtn()}>
+                <ExitToAppIcon className="functions__signout" />
               </div>
             </div>
           </div>

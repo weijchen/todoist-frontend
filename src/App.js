@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
-import { Home } from './components/Home/Home';
+import Home from './containers/Home/Home';
+import SignIn from './containers/Auth/SignIn';
+import SignUp from './containers/Auth/SignUp';
 import useStores from './stores/stores';
 import { useWindowSize } from './lib/reactHook';
 
@@ -20,8 +22,10 @@ export const App = observer(() => {
   return (
     <div className="App">
       <Switch>
-        <Route sensitive exact path="/" component={Home} />
-        <Redirect from="*" to="/notfound" />
+        <Route exact path="/" component={SignIn} />
+        <Route path="/signin/" component={SignIn} />
+        <Route path="/signup/" component={SignUp} />
+        <Route exact path="/home" component={Home} />
       </Switch>
     </div>
   );

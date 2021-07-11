@@ -42,6 +42,16 @@
         color:rgb(100, 100, 100)
       }
     }
+    .functions__signout {
+      color: white;
+      height: auto;
+      &:hover {
+        color: rgb(202, 202, 202);
+      }
+      &:active {
+        color:rgb(100, 100, 100)
+      }
+    }
     form {
       height: 60px;
       @include smaller-than-lg {

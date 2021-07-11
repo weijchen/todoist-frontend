@@ -114,6 +114,7 @@ function Home(props) {
 Home.propTypes = {
   isWaiting: PropTypes.bool.isRequired,
   errorMsg: PropTypes.string.isRequired,
+  isTokenValid: PropTypes.bool.isRequired,
   tasks: PropTypes.shape(
     PropTypes.shape({
       id: PropTypes.string,
