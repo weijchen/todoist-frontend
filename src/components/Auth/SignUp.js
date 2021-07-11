@@ -62,7 +62,7 @@ function SignUp(props) {
           />
         </div>
         <p>
-          Passwords must contain at least 1 upper case letter, 1 lower case letter and one number OR special character.
+          Passwords must contain at least 1 upper case letter, 1 lower case letter and one number AND special character.
         </p>
         <hr />
         <div>
