@@ -14,11 +14,17 @@ export default class TasksService extends BaseHttpService {
     }
 
     const queryStr = queryString.stringify(queryObj);
-    return this.get(`tasks${queryStr ? `?${queryStr}` : ''}`);
+    return this.get(`tasks/${queryStr ? `?${queryStr}` : ''}`);
   }
 
   async deleteTask(id) {
     await this.delete(`tasks/${id}`);
+  }
+
+  async updateTaskTitle(id, title) {
+    return this.patch(`tasks/${id}/title`, {
+      title,
+    });
   }
 
   updateTaskStatus(id, status) {

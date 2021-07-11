@@ -53,24 +53,28 @@
       }
 
       &.pinned {
-        background-color: $color-red-50;
+        background-color: $color-orange-100;
         color: $color-white-100;
         #edit-icon {
+          color: $color-white-100;
           &:hover {
             color: $color-white-100;
           }
         }
         #done-icon {
+          color: $color-white-100;
           &:hover {
             color: $color-white-100;
           }
         }
         #delete-icon {
+          color: $color-white-100;
           &:hover {
             color: $color-white-100;
           }
         }
         #drag-icon {
+          color: $color-white-100;
           &:hover {
             color: $color-white-100;
           }

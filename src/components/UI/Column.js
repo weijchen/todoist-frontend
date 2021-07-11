@@ -8,7 +8,7 @@ import Task from './Task';
 function Column(props) {
   const { droppableId, title, tasks, type } = props;
   const isDropDisabled = type === 'done';
-  console.log(tasks);
+
   return (
     <>
       <div className="column__container">
@@ -20,9 +20,12 @@ function Column(props) {
               {...provided.droppableProps}
               className={classnames('column__task__list', snapshot.isDraggingOver && 'draggingOver')}
             >
-              {tasks.map((ele, ind) => (
-                <Task id={ele.id} key={ele.id} index={ind} content={ele.content} />
-              ))}
+              {Array.isArray(tasks) &&
+                tasks.length !== 0 &&
+                tasks.map((ele, ind) => (
+                  <Task order={droppableId} id={ele.id} key={ele.id} index={ind} content={ele.title} />
+                ))}
+              {Array.isArray(tasks) && tasks.length === 0 && 'Great job'}
               {provided.placeholder}
             </div>
           )}

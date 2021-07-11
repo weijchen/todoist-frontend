@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_ROOT } from '../constants/config';
 
 axios.defaults.baseURL = API_ROOT;
-axios.defaults.headers.common['Content-Type'] = 'application/json';
+// axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 class BaseHttpService {
   BASE_URL = API_ROOT || 'http://localhost:3000';
@@ -41,7 +41,7 @@ class BaseHttpService {
     }
   }
 
-  static handle401() {
+  handle401() {
     window.location.hash = '/signin';
   }
 
@@ -70,7 +70,7 @@ class BaseHttpService {
     return token;
   }
 
-  static removeToken() {
+  removeToken() {
     localStorage.removeItem('accessToken');
   }
 }
